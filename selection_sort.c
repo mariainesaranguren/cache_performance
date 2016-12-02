@@ -1,19 +1,24 @@
-//insertion sort
+//selection sort
 
 #include <stdio.h>
 
-
+int arr [1000];
 int m_z = 2;
 int m_w = 1;
 int randInt();
 
 int main() {
 
-    int arr[1000];
+//    int arr[1000];
 
     //generate random numbers
     int i;
     for (i = 0; i < 1000; i++) arr[i] = randInt();
+/*
+    printf("unsorted numbers:\n");
+    for (i = 0; i < 1000; i++)
+        printf("%d\n", arr[i]);
+*/    
 
     int back;
     for (back = 1000-1; back > 0; back--) {
@@ -24,7 +29,11 @@ int main() {
         arr[largest] = arr[back];
         arr[back] = temp;
     }
-
+/*
+    printf("sorted numbers:\n");
+    for (i = 0; i < 1000; i++)
+        printf("%d\n", arr[i]);
+*/
     return 0;
 }
 
