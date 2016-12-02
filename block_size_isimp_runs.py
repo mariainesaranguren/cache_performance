@@ -18,15 +18,17 @@ miss_rate_vals = [] # list of miss_rate_vals of each capacity
 for capacity in capacities_all:
 	for block_size in block_size_vals:
 		sets = capacity/(associativity * block_size)
-		print "capacity: ", capacity
+#		print "capacity: ", capacity
 		cmd = ('isimp -dcache ' + str(associativity) + ' ' + str(int(math.log(sets, 2))) + ' ' + str(int(math.log((block_size * 4),2))) + ' a.out')
-		# print cmd
+		print cmd
 		os.system(cmd)
 		f = open('stats.csv')
 		reader = csv.reader(f)
 		my_dict = dict(reader)
 		miss_rate = float(my_dict['dCacheMissRate'])
 		miss_rate_vals.append(miss_rate)
+		f.close()
+		os.system('rm stats.csv')
 		# print "capacity: ", capacity, "miss_rate: ", miss_rate, "block_size: ", block_size
 	miss_rate_all.append(miss_rate_vals)
 	# Clear lists
@@ -37,9 +39,9 @@ for capacity in capacities_all:
 # Plotting
 for capacity in range(len(capacities_all)):
 	x = np.array(block_size_vals)
-	print x
+#	print x
 	y = np.array(miss_rate_all[capacity])
-	print y
+#	print y
 	plt.plot(x, y, '-o')
 
 plt.xscale('log', basex=2)
