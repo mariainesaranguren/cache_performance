@@ -11,7 +11,7 @@ import time
 miss_rate_all = []
 
 capacities_all = [32, 64, 128, 256, 512, 1024, 2048, 4096]
-associativity_vals = [1, 2, 3, 4, 5, 6, 7, 8]
+associativity_vals = [1, 2, 4, 8]
 block_size = 4
 miss_rate_vals = [] # list of miss_rate_vals of each capacity
 
